@@ -4,9 +4,9 @@
     box-sizing: border-box;
 }
 
-:root{
+/* :root{
     --arrowpos: 0;
-}
+} */
 
 .rowflex{
     display: flex;
@@ -334,7 +334,7 @@
     left: 0;
 }
 
-.scrollablebuttons::-webkit-scrollbar{
+.scrollbar::-webkit-scrollbar{
         display: none;
 }
 
