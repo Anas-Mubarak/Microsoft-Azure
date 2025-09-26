@@ -1,0 +1,392 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --arrowpos: 0;
+}
+
+.rowflex{
+    display: flex;
+    flex-flow: row;
+}
+
+.hideelement{
+    display: none;
+}
+
+.colflex{
+    display: flex;
+    flex-flow: column;
+}
+
+.valign-center{
+    display: flex;
+    align-items: center;
+}
+
+.halign-center{
+    display: flex;
+    justify-content: center;
+}
+
+.bolder{
+    font-weight: 600;
+}
+
+.topheader{
+    position: relative;
+    justify-content: center;
+    margin: 2px 2px 8px 0px;
+    padding: 10px 0;
+}
+
+.icon::after,.icon::before{
+    position: absolute;
+    font-weight: 400 !important;
+    font-family: 'icon' !important;
+}
+
+.icon2::before,.icon2::after{
+    font-family: 'icon2' !important;
+}
+
+.searchicon::before{
+    left: 9px;
+    top: 17px;
+    content: '';
+    font-size: 16px;
+}
+
+.roundedcorners{
+    border-radius: 8px;
+    font-size: 15px;
+    letter-spacing: -0.3px;
+}
+
+/* img.roundedcorners.newsimage>{
+   aspect-ratio: 2.33333 / 1;
+} */
+
+.microsoftlogo *{
+    width : 108px;
+}
+
+.dropdown{
+    position: relative;
+    border-top: 1px solid rgb(230, 230, 230);
+    font-size: 15px;
+    padding: 7px 16px;
+    font-family:'font2';
+}
+
+.dropdown::after{
+    left: 66.5px;
+    top: 13px;
+    content: '';
+    font-size: 12px;
+}
+
+.bluebox{
+    background-color: rgb(0, 109, 193);
+    color: white;
+    text-align: center;
+}
+
+.popup{
+    padding: 8px 12px;
+    font-family:'font3';
+}
+
+.firstline{
+    letter-spacing: -0.48px;
+    line-height: 24px;
+    font-size: 16px;
+}
+
+.blue2{
+    background-color: rgb(0, 120, 212);
+}
+
+.secondline{
+    font-size: 14px;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    line-height: 25px;
+    margin-left: 8px;
+    letter-spacing: normal;
+}
+
+.closebutton{
+    position: relative;
+    min-width: 57.5px;
+    pointer-events: none;
+}
+
+.closebutton::after{
+    content: '';
+    font-size: 14px;
+    top: 7px;
+    left:25px;
+    pointer-events: all;
+}
+
+.welcomeimage>*,.newsimage>*{
+    width: 100%;
+}
+
+.welcomesection{
+    padding: 32px 16px 88px 16px;
+    gap: 8px;
+    background: rgb(244, 250, 253);
+}
+
+.welcometext{
+    gap: 12px;
+    font-family: 'font3';
+}
+
+.wl1{
+    font-size: 12px;
+    letter-spacing: 0.96px;
+    font-weight: 600;
+}
+
+.wl2{
+    font-size: 40px;
+    font-weight: 500;
+    letter-spacing: -1px;
+    line-height: 48px;
+}
+
+.wl3{
+    margin-top: 4px;
+    padding-right: 16px;
+}
+
+.wl4{
+    margin-top: 12px;
+    gap: 8px;
+}
+
+.wl4>*{
+    font-size: 15px;
+    padding: 13px;
+    letter-spacing: -0.3px;
+    line-height: 24px;
+    font-weight: 600;
+}
+
+.wl4button2{
+    background: rgba(0, 0, 0, 0);
+    border: 2px solid rgb(23, 37, 61);
+    color: rgb(0, 66, 117);
+    padding: 11px;
+}
+
+.buttoninnertext{
+    margin-bottom: 2px;
+}
+
+.manwithtab>*{
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stickybar{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding-top: 18px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.20) 0px 0px 2px 0px, rgba(0, 0, 0, 0.20) 0px 2px 4px 0px;
+}
+
+.stickybarcontent{
+    position: relative;
+    margin: 0px 16px 19px;
+    color:rgb(0, 66, 117);
+    font-family: 'font3';
+    font-size: 14px;
+}
+
+.stickybarcontent::after{
+   content: ""; 
+   top: 0px;
+   right: -0.5px;
+   font-size: 16px;
+   color: rgb(0, 120, 212);
+}
+
+.horizontalline{
+    height: 4px;
+    background-color: rgb(0, 66, 117);
+}
+
+.featurednews{
+    padding: 56px 16px;
+    position: relative;
+}
+
+.categorysubhead,.categoryhead{
+    color: rgb(23, 37, 61);
+}
+
+.categoryhead{
+    line-height: 40px;
+    letter-spacing: -0.8px;
+    font-size: 32px;
+}
+
+.absoluteimage{
+    position: absolute;
+    left:0;
+    top: 0;
+}
+
+.newsboxcontainer{
+    padding: 32px 4px 0;
+    gap: 8px;
+}
+
+.newsbox{
+    border-radius: 16px;
+    padding: 8px;
+    gap: 12px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 0px 2px 0px, rgba(0, 0, 0, 0.14) 0px 2px 4px 0px;
+}
+
+.newshead,.newstext{
+    padding: 0 8px;
+}
+
+.newshead{
+    color: rgb(14, 23, 38);
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+.newstext,.newshead{
+    font-family: 'font3';
+}
+
+.newslast{
+    margin-top: 12px;
+    position: relative;
+    padding: 8px;
+}
+
+.newsbutton::before{
+    content: '';
+    font-size: 15px;
+    bottom: 8px;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: rgb(0, 120, 212);
+    border: 2px solid transparent;
+    color: white;
+}
+
+.buttonnews{
+    padding-left: 42.5px;
+    line-height: 33px;
+    color: rgb(0, 66, 117);
+    font-size: 14px;
+    font-family: 'font3';
+}
+
+.specialtext{
+    padding-bottom: 2px;
+    line-height: 31px;
+}
+
+.scrollablebuttons{
+    margin: 0;
+    scrollbar-width: none;
+    position: relative;
+}
+
+.scrollbar{
+    overflow-x: scroll;
+    text-wrap: nowrap;
+    padding: 0;
+}
+
+.scrollablebuttons::before,.scrollablebuttons::after{
+    position: absolute;
+    border: 2px solid rgb(0, 66, 117);
+    border-radius: 200px;
+    padding: 10px;
+    transform: translate(0,-50%);
+    top: 50%;
+    background: linear-gradient(270deg, rgb(244, 250, 253) 25%, rgba(242, 242, 242, 0) 100%);
+}
+
+.scrollablebuttons::after{
+    content: "";
+    right: 0;
+}
+
+.scrollablebuttons::before{
+    content: "";
+    left: 0;
+}
+
+.scrollablebuttons::-webkit-scrollbar{
+        display: none;
+}
+
+.bscroll{
+    border-radius: 200px;
+    padding: 8px 16px;
+    border: none;
+    font-family: 'font3';
+    background-color: rgba(0, 85, 151, 0.1);
+}
+
+.floatingmessage{
+    display: inline-block;
+    position: fixed;
+    z-index: 20;
+    bottom: 0;
+    right: 16px;
+    padding: 15px 14px 15px 36px;
+    font-family: 'font3';
+    background: rgb(0, 103, 184)
+}
+
+.floatingmessage::before{
+    content: "";
+    top: 50%;
+    transform: translate(0,-50%);
+    left: 14.5px;
+}
+
+@font-face {
+    font-family: 'icon';
+    src: url('assets/fonts/mwfmdl2-v3.54.woff');
+}
+
+@font-face {
+    font-family: 'font1';
+    src: url('assets/fonts/latest.woff2');
+}
+
+@font-face {
+    font-family: 'font2';
+    src: url('assets/fonts/latest\ \(1\).woff2');
+}
+
+@font-face {
+    font-family: 'font3';
+    src: url('assets/fonts/latest\ \(2\).woff2');
+}
+
+@font-face {
+    font-family: 'icon2';
+    src: url('assets/fonts/MWFFluentIcons.woff2');
+}
+
+/*Absolute image*/
