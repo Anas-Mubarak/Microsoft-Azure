@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-/* :root{
-    --arrowpos: 0;
-} */
-
 .rowflex{
     display: flex;
     flex-flow: row;
@@ -66,10 +62,6 @@
     letter-spacing: -0.3px;
 }
 
-/* img.roundedcorners.newsimage>{
-   aspect-ratio: 2.33333 / 1;
-} */
-
 .microsoftlogo *{
     width : 108px;
 }
@@ -97,7 +89,7 @@
 
 .popup{
     padding: 8px 12px;
-    font-family:'font3';
+    font-family:'font1';
 }
 
 .firstline{
@@ -116,6 +108,7 @@
     text-underline-offset: 2px;
     line-height: 25px;
     margin-left: 8px;
+    font-family: 'font3';
     letter-spacing: normal;
 }
 
@@ -164,6 +157,7 @@
 .wl3{
     margin-top: 4px;
     padding-right: 16px;
+    font-family: 'font3';
 }
 
 .wl4{
@@ -302,10 +296,36 @@
     line-height: 31px;
 }
 
-.scrollablebuttons{
-    margin: 0;
+.scrollablebuttons{ 
     scrollbar-width: none;
     position: relative;
+    padding: 0;
+}
+
+.scrollshadow{
+    position: relative;
+}
+
+.scrollshadow::before,.scrollshadow::after{
+    content: '';
+    position: absolute;
+    background: linear-gradient(270deg,white 25%,transparent  100%);
+    width: 20vw;
+    top: 0;
+    height: 100%;
+    z-index: 1;
+}
+
+.scrollshadow::before{
+    background: linear-gradient(90deg, rgb(244, 250, 253) 25%, rgba(242, 242, 242, 0) 100%);
+}
+
+.scrollshadow::after{
+    right: -4px;
+}
+
+.scrollablebuttons,.scrollbar,.scrollshadow{
+    margin: 0;
 }
 
 .scrollbar{
@@ -318,20 +338,23 @@
     position: absolute;
     border: 2px solid rgb(0, 66, 117);
     border-radius: 200px;
-    padding: 10px;
+    padding: 4px 9px 8px;
     transform: translate(0,-50%);
-    top: 50%;
+    top: calc(50% - 1px);
+    font-size: 18px;
+    line-height: 24px;
+    z-index: 2;
     background: linear-gradient(270deg, rgb(244, 250, 253) 25%, rgba(242, 242, 242, 0) 100%);
 }
 
 .scrollablebuttons::after{
     content: "";
-    right: 0;
+    right: -4px;
 }
 
 .scrollablebuttons::before{
-    content: "";
-    left: 0;
+    content: "";
+    left: -4px;
 }
 
 .scrollbar::-webkit-scrollbar{
