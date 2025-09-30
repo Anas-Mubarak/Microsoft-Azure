@@ -312,7 +312,7 @@
     padding: 0;
 }
 
-.scrollshadow,.lihead,.scrollablebuttons{
+.scrollshadow,.lihead,.scrollablebuttons,.database{
     position: relative;
 }
 
@@ -334,7 +334,7 @@
     right: -4px;
 }
 
-.scrollablebuttons,.scrollbar,.scrollshadow,.lihead{
+.scrollablebuttons,.scrollbar,.scrollshadow,.lihead,.linews{
     margin: 0;
 }
 
@@ -401,7 +401,7 @@
     overflow: hidden;
 }
 
-.licontent,.lihead,.lilink{
+.licontent,.lihead,.lilink,.linews{
     padding: 0;
 }
 
@@ -429,6 +429,11 @@
     border-radius: 16px;
 }
 
+.linews{
+    margin-top: 24px;
+    padding: 8px 0;
+}
+
 .floatingmessage{
     display: inline-block;
     position: fixed;
@@ -438,6 +443,14 @@
     padding: 15px 14px 15px 36px;
     font-family: 'font3';
     background: rgb(0, 103, 184)
+}
+
+.solutions{
+    padding-bottom: 48px;
+}
+
+.database{
+    padding: 16px;
 }
 
 .floatingmessage::before{

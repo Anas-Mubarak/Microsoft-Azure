@@ -1,6 +1,6 @@
-let arrowcontainer = document.querySelector('.scrollablebuttons')
-let shadowcontainer = document.querySelector('.scrollshadow')
-let scrollbar = document.querySelector('.scrollbar')
+ document.querySelectorAll('.scrollablebuttons')
+let shadowcontainer = document.querySelectorAll('.scrollshadow')
+let scrollbar = document.querySelectorAll('.scrollbar')
 let animationdone
 // let arrowcontainer = document.querySelector('')
 
@@ -57,6 +57,12 @@ function shrinkorexpand(current,flg)
         }
         i++
     }
+    if(flg){
+        current.style.height = current.getBoundingClientRect().height + minusheight
+    }
+    else{
+        current.style.height = current.getBoundingClientRect().height - minusheight
+    }
     // console.log('exit i',i)
 }
 
@@ -74,7 +80,7 @@ function main(){
     })
 
     document.querySelectorAll('.bscroll').forEach((obj)=>{
-        document.querySelector('.defaultselect').classList.add('selecteditem')
+        document.querySelectorAll('.defaultselect').forEach((df)=>df.classList.add('selecteditem')) 
         obj.addEventListener('click',(objs)=>{
         objs.target.classList.add('selecteditem')
         console.log(objs)
@@ -86,10 +92,14 @@ function main(){
 
     initialize()
     animationdone = 1
-    classtoggler([arrowcontainer,shadowcontainer],'add',['sr','shr'])
-    scrollbar.addEventListener('scroll',(e)=>{
+    scrollbar.forEach(element => {
+        let arrowcontainer = element.parentElement
+        let shadowcontainer = arrowcontainer.parentElement
+        classtoggler([arrowcontainer,shadowcontainer],'add',['sr','shr'])
+        element.addEventListener('scroll',(e)=>{
         if(e.target.scrollLeft>0)
         {
+            console.log('scrolled')
             classtoggler([arrowcontainer,shadowcontainer],'add',['sl','shl'])
             if(e.target.scrollLeft === e.target.scrollWidth-e.target.clientWidth)
             {
@@ -105,6 +115,7 @@ function main(){
         console.log(e.target.scrollLeft)
         console.log('scrollwidth',e.target.scrollWidth-e.target.clientWidth)
     })
+    });
 
     document.querySelectorAll('.lihead').forEach(element => {
             element.addEventListener('click',(e)=>{
