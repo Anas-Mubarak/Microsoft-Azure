@@ -1,6 +1,7 @@
 let arrowcontainer = document.querySelector('.scrollablebuttons')
 let shadowcontainer = document.querySelector('.scrollshadow')
 let scrollbar = document.querySelector('.scrollbar')
+let animationdone
 // let arrowcontainer = document.querySelector('')
 
 window.addEventListener('load',()=>{
@@ -16,6 +17,13 @@ function sibling_selector(current,ref)
     }
 }
 
+function initialize()
+{
+    document.querySelectorAll('.shrinklist').forEach((el)=>{
+        shrinkorexpand(el,0)
+    })
+}
+
 function classtoggler(ref,operation,cl){
     let i=0
     ref.forEach(element => {
@@ -24,10 +32,45 @@ function classtoggler(ref,operation,cl){
     });
 }
 
+function shrinkorexpand(current,flg)
+{
+    animationdone = 0
+    let i=0
+    let minusheight = [...current.children].slice(1).reduce((acc,val)=>
+    {
+        return acc+val.getBoundingClientRect().height
+    },72)
+    // console.log('minusheight',minusheight)
+    // console.log('entry i',i)
+    while(i<=minusheight)
+    {
+        if(flg)
+        {
+            current.style.height = current.getBoundingClientRect().height + i
+            // console.log(`${Math.min(180,181*i/minusheight)}deg`)
+            current.style.setProperty('--ang',`${Math.min(180,181*i/minusheight)}deg`)
+        }
+        else{
+            current.style.height = current.getBoundingClientRect().height - i
+            // console.log('--ang',`${Math.min(360,360-(180*i/minusheight))}deg`)
+            current.style.setProperty('--ang',`${Math.min(360,360-((360-i)*i/minusheight))}deg`)
+        }
+        i++
+    }
+    // console.log('exit i',i)
+}
+
+function disablefunction(timeout)
+{
+    animationdone = 0
+    setTimeout(() => {
+        animationdone = 1
+    }, timeout);
+}
+
 function main(){
     document.querySelector('.closebutton').addEventListener('click',()=>{
         document.querySelector('.popup').classList.add('hideelement')
-
     })
 
     document.querySelectorAll('.bscroll').forEach((obj)=>{
@@ -41,31 +84,46 @@ function main(){
     })
     }) 
 
+    initialize()
+    animationdone = 1
     classtoggler([arrowcontainer,shadowcontainer],'add',['sr','shr'])
-    // arrowcontainer.classList.add('sr')
-    // shadowcontainer.classList.add('shr')
     scrollbar.addEventListener('scroll',(e)=>{
         if(e.target.scrollLeft>0)
         {
             classtoggler([arrowcontainer,shadowcontainer],'add',['sl','shl'])
-            // arrowcontainer.classList.add('sl')
-            // shadowcontainer.classList.add('shl')
             if(e.target.scrollLeft === e.target.scrollWidth-e.target.clientWidth)
             {
-                console.log('remv')
-                arrowcontainer.classList.remove('sr')
-                shadowcontainer.classList.remove('shr')
+                classtoggler([arrowcontainer,shadowcontainer],'remove',['sr','shr'])
             }
             else{
-                arrowcontainer.classList.add('sr')
-                shadowcontainer.classList.add('shr')
+                classtoggler([arrowcontainer,shadowcontainer],'add',['sr','shr'])
             }
         }
         else{
-                arrowcontainer.classList.remove('sl')
-                shadowcontainer.classList.remove('shl')
+            classtoggler([arrowcontainer,shadowcontainer],'remove',['sl','shl'])
         } 
         console.log(e.target.scrollLeft)
         console.log('scrollwidth',e.target.scrollWidth-e.target.clientWidth)
     })
+
+    document.querySelectorAll('.lihead').forEach(element => {
+            element.addEventListener('click',(e)=>{
+            if(animationdone)
+            {
+                let current = e.target.parentElement
+                current.classList.toggle('shrinklist')
+                console.log('toggled') 
+                disablefunction(1600)
+                if(current.classList.contains('shrinklist'))
+                {
+                    shrinkorexpand(current,0)
+                }
+                else{
+                    shrinkorexpand(current,1)
+                }
+            }})
+        // let height = current.getBoundingClientRect()
+        // console.log(height)
+        // current.style.height = height
+    }) 
 }

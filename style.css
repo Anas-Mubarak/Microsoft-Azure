@@ -8,6 +8,10 @@
     font-size: 16px;
 }
 
+:root{
+    --ang : 180deg;
+}
+
 .rowflex{
     display: flex;
     flex-flow: row;
@@ -380,27 +384,49 @@
  color: white;
 }
 
-.listitem{
-    gap: 24px;
+.listitems>.listitem:nth-child(n+2)
+{
+    padding-top: 24px;
 }
 
-.liimage>*{
-    width: 100%;
-    border-radius: 16px;
+.listitems{
+    gap: 0;
+}
+
+.listitem{
+    gap: 24px;
+    border-bottom: 1px solid rgb(189,197,210);
+    padding-bottom: 24px;
+    transition: height 0.7s ease-in;
+    overflow: hidden;
 }
 
 .licontent,.lihead,.lilink{
     padding: 0;
 }
 
+.lihead{
+    height: 25px;
+    font-family: 'font3';
+}
+
 .lihead::after{
     content: "";
     line-height: 25px;
     right: 0;
+    transition: transform 0.7s ease-in;
+    transform:rotate(var(--ang));
 }
 
 .lilink{
-    line-height: 22px;
+    padding: 3px 0 2px;
+    text-underline-offset: 2px;
+    line-height: 20px;
+}
+
+.liimage>*{
+    width: 100%;
+    border-radius: 16px;
 }
 
 .floatingmessage{
@@ -417,13 +443,14 @@
 .floatingmessage::before{
     content: "";
     top: 50%;
+    font-size: 15px;
     transform: translate(0,-50%);
     left: 14.5px;
 }
 
 @font-face {
     font-family: 'icon';
-    src: url('assets/fonts/mwfmdl2-v3.54.woff')format('woff');
+    src: url('assets/fonts/mwfmdl2-v3.54.woff');
 }
 
 @font-face {
@@ -438,7 +465,7 @@
 
 @font-face {
     font-family: 'font3';
-    src: url('assets/fonts/font4.ttf');
+    src: url('assets/fonts/font3.woff2');
 }
 
 @font-face {
