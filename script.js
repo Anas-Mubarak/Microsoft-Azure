@@ -2,18 +2,19 @@
 let shadowcontainer = document.querySelectorAll('.scrollshadow')
 let scrollbar = document.querySelectorAll('.scrollbar')
 let animationdone
+let scrollbar2 = document.querySelectorAll('.scrollbar2')
 // let arrowcontainer = document.querySelector('')
 
 window.addEventListener('load',()=>{
     main()
 })
 
-function sibling_selector(current,ref)
+function sibling_selector(current,ref,classname)
 {
     while(current[ref])
     {
         current = current[ref]
-        current.classList.remove('selecteditem')
+        current.classList.remove(classname)
     }
 }
 
@@ -63,7 +64,6 @@ function shrinkorexpand(current,flg)
     else{
         current.style.height = current.getBoundingClientRect().height - minusheight
     }
-    // console.log('exit i',i)
 }
 
 function disablefunction(timeout)
@@ -74,21 +74,25 @@ function disablefunction(timeout)
     }, timeout);
 }
 
+function buttontoggler(mainclass,selectionkey){
+    document.querySelectorAll('.'+mainclass).forEach((obj)=>{
+        obj.addEventListener('click',(objs)=>{
+        objs.target.classList.add(selectionkey)
+        console.log(objs)
+        let current = objs.target
+        sibling_selector(current,'previousElementSibling',selectionkey)
+        sibling_selector(current,'nextElementSibling',selectionkey)
+    })
+    })
+}
+
 function main(){
     document.querySelector('.closebutton').addEventListener('click',()=>{
         document.querySelector('.popup').classList.add('hideelement')
     })
 
-    document.querySelectorAll('.bscroll').forEach((obj)=>{
-        document.querySelectorAll('.defaultselect').forEach((df)=>df.classList.add('selecteditem')) 
-        obj.addEventListener('click',(objs)=>{
-        objs.target.classList.add('selecteditem')
-        console.log(objs)
-        let current = objs.target
-        sibling_selector(current,'previousElementSibling')
-        sibling_selector(current,'nextElementSibling')
-    })
-    }) 
+    buttontoggler('bscroll','selecteditem')
+    buttontoggler('scrollcontent','selectedscroll')
 
     initialize()
     animationdone = 1
@@ -133,8 +137,5 @@ function main(){
                     shrinkorexpand(current,1)
                 }
             }})
-        // let height = current.getBoundingClientRect()
-        // console.log(height)
-        // current.style.height = height
     }) 
 }
