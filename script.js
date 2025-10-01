@@ -3,7 +3,6 @@ let shadowcontainer = document.querySelectorAll('.scrollshadow')
 let scrollbar = document.querySelectorAll('.scrollbar')
 let animationdone
 let scrollbar2 = document.querySelectorAll('.scrollbar2')
-// let arrowcontainer = document.querySelector('')
 
 window.addEventListener('load',()=>{
     main()
@@ -26,6 +25,7 @@ function initialize()
 }
 
 function classtoggler(ref,operation,cl){
+    console.log(ref,operation,cl)
     let i=0
     ref.forEach(element => {
         element.classList[operation](cl[i])
@@ -86,6 +86,36 @@ function buttontoggler(mainclass,selectionkey){
     })
 }
 
+function arrowhandler(mainclass,rel,lclasses,rclasses){
+    mainclass.forEach(element => {
+    let arrowcontainer = [element[rel[0]]]
+    if(rel[1])
+    {
+        arrowcontainer.push(arrowcontainer[0][rel[1]])
+    }
+        classtoggler([...arrowcontainer],'add',rclasses)
+        element.addEventListener('scroll',(e)=>{
+        if(e.target.scrollLeft>0)
+        {
+            console.log('scrolled')
+            classtoggler([...arrowcontainer],'add',lclasses)
+            if(e.target.scrollLeft === e.target.scrollWidth-e.target.clientWidth)
+            {
+                classtoggler([...arrowcontainer],'remove',rclasses)
+            }
+            else{
+                classtoggler([...arrowcontainer],'add',rclasses)
+            }
+        }
+        else{
+            classtoggler([...arrowcontainer],'remove',lclasses)
+        } 
+        console.log(e.target.scrollLeft)
+        console.log('scrollwidth',e.target.scrollWidth-e.target.clientWidth)
+    })
+    })
+}
+
 function main(){
     document.querySelector('.closebutton').addEventListener('click',()=>{
         document.querySelector('.popup').classList.add('hideelement')
@@ -96,30 +126,9 @@ function main(){
 
     initialize()
     animationdone = 1
-    scrollbar.forEach(element => {
-        let arrowcontainer = element.parentElement
-        let shadowcontainer = arrowcontainer.parentElement
-        classtoggler([arrowcontainer,shadowcontainer],'add',['sr','shr'])
-        element.addEventListener('scroll',(e)=>{
-        if(e.target.scrollLeft>0)
-        {
-            console.log('scrolled')
-            classtoggler([arrowcontainer,shadowcontainer],'add',['sl','shl'])
-            if(e.target.scrollLeft === e.target.scrollWidth-e.target.clientWidth)
-            {
-                classtoggler([arrowcontainer,shadowcontainer],'remove',['sr','shr'])
-            }
-            else{
-                classtoggler([arrowcontainer,shadowcontainer],'add',['sr','shr'])
-            }
-        }
-        else{
-            classtoggler([arrowcontainer,shadowcontainer],'remove',['sl','shl'])
-        } 
-        console.log(e.target.scrollLeft)
-        console.log('scrollwidth',e.target.scrollWidth-e.target.clientWidth)
-    })
-    });
+
+    arrowhandler(scrollbar,['parentElement','parentElement'],['sl','shl'],['sr','shr'])
+    arrowhandler(scrollbar2,['nextElementSibling'],['ib'],['ir'])
 
     document.querySelectorAll('.lihead').forEach(element => {
             element.addEventListener('click',(e)=>{
